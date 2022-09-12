@@ -4401,9 +4401,9 @@ boolean updateBolt(bolt *theBolt, creature *caster, short x, short y,
                 }
                 break;
             case BE_FREEZE:
-                monst->status[STATUS_PARALYZED] = monst->maxStatus[STATUS_PARALYZED] = max(monst->status[STATUS_PARALYZED], 20);
+                monst->status[STATUS_FROZEN] = monst->maxStatus[STATUS_FROZEN] = max(monst->status[STATUS_FROZEN], 20);
 
-                if (boltCatalog[BOLT_SLOW].backColor) {
+                if (boltCatalog[BOLT_FREEZE].backColor) {
                     flashMonster(monst, boltCatalog[BOLT_FREEZE].backColor, 100);
                 }
                 if (autoID) {

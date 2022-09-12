@@ -286,6 +286,9 @@ void describeLocation(char *buf, short x, short y) {
         } else if (monst->status[STATUS_PARALYZED]) {
             strcpy(verb, "is frozen in place");
             subjectMoving = false;
+        } else if (monst->status[STATUS_FROZEN]) {
+            strcpy(verb, "is frozen in place");
+            subjectMoving = false;
         } else if (monst->status[STATUS_STUCK]) {
             strcpy(verb, "is entangled");
             subjectMoving = false;
@@ -484,6 +487,7 @@ void moveEntrancedMonsters(enum directions dir) {
         if (monst->status[STATUS_ENTRANCED]
             && !monst->status[STATUS_STUCK]
             && !monst->status[STATUS_PARALYZED]
+            && !monst->status[STATUS_FROZEN]
             && !(monst->bookkeepingFlags & MB_CAPTIVE)) {
 
             moveMonster(monst, nbDirs[dir][0], nbDirs[dir][1]);
