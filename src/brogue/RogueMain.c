@@ -382,6 +382,12 @@ void initializeRogue(uint64_t seed) {
 
     recalculateEquipmentBonuses();
 
+    theItem = generateItem(STAFF, STAFF_ICE);
+    theItem->enchant1 = 10;
+    theItem->charges = 300;
+    identify(theItem);
+    theItem = addItemToPack(theItem);
+
     DEBUG {
         theItem = generateItem(RING, RING_CLAIRVOYANCE);
         theItem->enchant1 = max(DROWS, DCOLS);
@@ -544,6 +550,7 @@ void startLevel(short oldLevelNumber, short stairDirection) {
                     && !(cellHasTerrainFlag(x, y, T_OBSTRUCTS_PASSABILITY))
                     && !monst->status[STATUS_ENTRANCED]
                     && !monst->status[STATUS_PARALYZED]
+                    && !monst->status[STATUS_FROZEN]
                     && (mapToStairs[monst->loc.x][monst->loc.y] < 30000 || monst->creatureState == MONSTER_ALLY || monst == rogue.yendorWarden)) {
 
                     monst->status[STATUS_ENTERS_LEVEL_IN] = clamp(mapToStairs[monst->loc.x][monst->loc.y] * monst->movementSpeed / 100 + 1, 1, 150);

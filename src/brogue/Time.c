@@ -2429,6 +2429,7 @@ void playerTurnEnded() {
 
                     if ((monst->info.flags & MONST_GETS_TURN_ON_ACTIVATION)
                         || monst->status[STATUS_PARALYZED]
+                        || monst->status[STATUS_FROZEN]
                         || monst->status[STATUS_ENTRANCED]
                         || (monst->bookkeepingFlags & MB_CAPTIVE)) {
 

@@ -4622,6 +4622,7 @@ short printMonsterInfo(creature *monst, short y, boolean dim, boolean highlight)
         "Lifespan",
         "Shielded",
         "Invisible",
+        "Frozen",
     };
 
     if (y >= ROWS - 1) {
@@ -4743,7 +4744,11 @@ short printMonsterInfo(creature *monst, short y, boolean dim, boolean highlight)
 
     if (!player.status[STATUS_HALLUCINATING] || rogue.playbackOmniscience || monst == &player) {
 
+      
+
         for (i=0; i<NUMBER_OF_STATUS_EFFECTS; i++) {
+            
+
             if (i == STATUS_WEAKENED && monst->status[i] > 0) {
                 sprintf(buf, "%s%i", statusStrings[STATUS_WEAKENED], monst->weaknessAmount);
                 printProgressBar(0, y++, buf, monst->status[i], monst->maxStatus[i], &redBar, dim);
